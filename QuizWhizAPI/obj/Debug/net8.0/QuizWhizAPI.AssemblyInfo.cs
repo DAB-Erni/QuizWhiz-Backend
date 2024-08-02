@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuizWhizAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99968510a3a00ac597010670167aac7683e97972")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuizWhizAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuizWhizAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

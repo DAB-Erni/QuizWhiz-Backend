@@ -11,7 +11,7 @@ using QuizWhizAPI.Data;
 namespace QuizWhizAPI.Migrations
 {
     [DbContext(typeof(QuizDbContext))]
-    [Migration("20240801073917_Initial Migration")]
+    [Migration("20240802063046_Initial Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -145,7 +145,7 @@ namespace QuizWhizAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
