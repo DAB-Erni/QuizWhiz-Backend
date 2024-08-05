@@ -3,40 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\data\\quizdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\data\\quizdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\models\\entities\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\models\\entities\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\models\\entities\\checktest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\models\\entities\\checktest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\mappings\\dtomapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\mappings\\dtomapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\models\\dto\\takequizdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\models\\dto\\takequizdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\models\\entities\\takequiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\models\\entities\\takequiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\controllers\\takequizcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\controllers\\takequizcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\models\\dto\\takequizcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\models\\dto\\takequizcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\models\\dto\\takequizdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\models\\dto\\takequizdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|c:\\users\\boot camp\\downloads\\quizwhizapi\\quizwhiz\\quizwhizapi\\models\\dto\\createdquizdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D99141D-B1C9-4D9A-9BF5-AEADA6D0AFCF}|QuizWhizAPI\\QuizWhizAPI.csproj|solutionrelative:quizwhizapi\\models\\dto\\createdquizdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 260,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,119 +46,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Question.cs",
-              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Entities\\Question.cs",
-              "RelativeDocumentMoniker": "QuizWhizAPI\\Models\\Entities\\Question.cs",
-              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Entities\\Question.cs",
-              "RelativeToolTip": "QuizWhizAPI\\Models\\Entities\\Question.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T06:42:19.433Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CheckTest.cs",
-              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Entities\\CheckTest.cs",
-              "RelativeDocumentMoniker": "QuizWhizAPI\\Models\\Entities\\CheckTest.cs",
-              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Entities\\CheckTest.cs",
-              "RelativeToolTip": "QuizWhizAPI\\Models\\Entities\\CheckTest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAArAAAA",
+              "Title": "CreatedQuizDto.cs",
+              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Dto\\CreatedQuizDto.cs",
+              "RelativeDocumentMoniker": "QuizWhizAPI\\Models\\Dto\\CreatedQuizDto.cs",
+              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Dto\\CreatedQuizDto.cs",
+              "RelativeToolTip": "QuizWhizAPI\\Models\\Dto\\CreatedQuizDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T06:29:22.365Z",
+              "WhenOpened": "2024-08-05T05:56:07.641Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "QuizDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Data\\QuizDbContext.cs",
-              "RelativeDocumentMoniker": "QuizWhizAPI\\Data\\QuizDbContext.cs",
-              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Data\\QuizDbContext.cs",
-              "RelativeToolTip": "QuizWhizAPI\\Data\\QuizDbContext.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAwwEUAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T06:07:31.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DtoMapping.cs",
-              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Mappings\\DtoMapping.cs",
-              "RelativeDocumentMoniker": "QuizWhizAPI\\Mappings\\DtoMapping.cs",
-              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Mappings\\DtoMapping.cs",
-              "RelativeToolTip": "QuizWhizAPI\\Mappings\\DtoMapping.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T01:22:10.894Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "QuestionController.cs",
-              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Controllers\\QuestionController.cs",
-              "RelativeDocumentMoniker": "QuizWhizAPI\\Controllers\\QuestionController.cs",
-              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Controllers\\QuestionController.cs",
-              "RelativeToolTip": "QuizWhizAPI\\Controllers\\QuestionController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADgAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T05:32:12.691Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TakeQuizController.cs",
-              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Controllers\\TakeQuizController.cs",
-              "RelativeDocumentMoniker": "QuizWhizAPI\\Controllers\\TakeQuizController.cs",
-              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Controllers\\TakeQuizController.cs",
-              "RelativeToolTip": "QuizWhizAPI\\Controllers\\TakeQuizController.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAQwBQAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T05:31:54.622Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TakeQuiz.cs",
-              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Entities\\TakeQuiz.cs",
-              "RelativeDocumentMoniker": "QuizWhizAPI\\Models\\Entities\\TakeQuiz.cs",
-              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Entities\\TakeQuiz.cs",
-              "RelativeToolTip": "QuizWhizAPI\\Models\\Entities\\TakeQuiz.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBoAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T05:35:19.682Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TakeQuizDto.cs",
-              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Dto\\TakeQuizDto.cs",
-              "RelativeDocumentMoniker": "QuizWhizAPI\\Models\\Dto\\TakeQuizDto.cs",
-              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Dto\\TakeQuizDto.cs",
-              "RelativeToolTip": "QuizWhizAPI\\Models\\Dto\\TakeQuizDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T05:35:25.913Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "TakeQuizCreateDto.cs",
               "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Dto\\TakeQuizCreateDto.cs",
               "RelativeDocumentMoniker": "QuizWhizAPI\\Models\\Dto\\TakeQuizCreateDto.cs",
               "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Dto\\TakeQuizCreateDto.cs",
               "RelativeToolTip": "QuizWhizAPI\\Models\\Dto\\TakeQuizCreateDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAABGAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T05:35:32.084Z",
+              "WhenOpened": "2024-08-05T05:52:56.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TakeQuizController.cs",
+              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Controllers\\TakeQuizController.cs",
+              "RelativeDocumentMoniker": "QuizWhizAPI\\Controllers\\TakeQuizController.cs",
+              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Controllers\\TakeQuizController.cs",
+              "RelativeToolTip": "QuizWhizAPI\\Controllers\\TakeQuizController.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAgwDkAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T05:36:19.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TakeQuizDto.cs",
+              "DocumentMoniker": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Dto\\TakeQuizDto.cs",
+              "RelativeDocumentMoniker": "QuizWhizAPI\\Models\\Dto\\TakeQuizDto.cs",
+              "ToolTip": "C:\\Users\\Boot Camp\\Downloads\\QuizWhizAPI\\QuizWhiz\\QuizWhizAPI\\Models\\Dto\\TakeQuizDto.cs",
+              "RelativeToolTip": "QuizWhizAPI\\Models\\Dto\\TakeQuizDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T05:39:42.398Z",
               "EditorCaption": ""
             }
           ]

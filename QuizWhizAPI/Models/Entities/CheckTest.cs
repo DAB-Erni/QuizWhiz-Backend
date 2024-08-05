@@ -16,6 +16,9 @@ namespace QuizWhizAPI.Models.Entities
         public int TakeQuizId { get; set; }
         public TakeQuiz TakeQuiz { get; set; }
 
+        [Required]
+        public string Answer { get; set; } = string.Empty;
+
         public bool IsCorrect { get; set; }
 
     }

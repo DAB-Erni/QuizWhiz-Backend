@@ -11,8 +11,8 @@ using QuizWhizAPI.Data;
 namespace QuizWhizAPI.Migrations
 {
     [DbContext(typeof(QuizDbContext))]
-    [Migration("20240802063046_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20240805054217_Initial migration")]
+    partial class Initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,10 @@ namespace QuizWhizAPI.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CheckTestId"));
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("bit");
@@ -159,13 +163,13 @@ namespace QuizWhizAPI.Migrations
                     b.HasOne("QuizWhizAPI.Models.Entities.Question", "Question")
                         .WithOne("CheckTest")
                         .HasForeignKey("QuizWhizAPI.Models.Entities.CheckTest", "QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("QuizWhizAPI.Models.Entities.TakeQuiz", "TakeQuiz")
                         .WithMany("CheckTests")
                         .HasForeignKey("TakeQuizId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Question");

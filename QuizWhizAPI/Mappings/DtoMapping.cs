@@ -27,7 +27,8 @@ namespace QuizWhizAPI.Mapping
 
             // TakeQuiz mappings
             CreateMap<TakeQuiz, TakeQuizDto>();
-            CreateMap<TakeQuizCreateDto, TakeQuiz>();
+            CreateMap<TakeQuizCreateDto, TakeQuiz>()
+            .ForMember(dest => dest.CheckTests, opt => opt.Ignore());
 
             // CheckTest mappings
             CreateMap<CheckTest, CheckTestDto>();
