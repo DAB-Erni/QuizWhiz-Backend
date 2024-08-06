@@ -5,7 +5,7 @@
 namespace QuizWhizAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Initialmigration : Migration
+    public partial class initialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -94,45 +94,6 @@ namespace QuizWhizAPI.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "CheckTests",
-                columns: table => new
-                {
-                    CheckTestId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    QuestionId = table.Column<int>(type: "int", nullable: false),
-                    TakeQuizId = table.Column<int>(type: "int", nullable: false),
-                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsCorrect = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CheckTests", x => x.CheckTestId);
-                    table.ForeignKey(
-                        name: "FK_CheckTests_Questions_QuestionId",
-                        column: x => x.QuestionId,
-                        principalTable: "Questions",
-                        principalColumn: "QuestionId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_CheckTests_TakeQuizzes_TakeQuizId",
-                        column: x => x.TakeQuizId,
-                        principalTable: "TakeQuizzes",
-                        principalColumn: "TakeQuizId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CheckTests_QuestionId",
-                table: "CheckTests",
-                column: "QuestionId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CheckTests_TakeQuizId",
-                table: "CheckTests",
-                column: "TakeQuizId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_CreatedQuizzes_UserId",
                 table: "CreatedQuizzes",
@@ -157,9 +118,6 @@ namespace QuizWhizAPI.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "CheckTests");
-
             migrationBuilder.DropTable(
                 name: "Questions");
 

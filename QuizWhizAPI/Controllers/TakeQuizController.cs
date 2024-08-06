@@ -22,10 +22,11 @@ namespace QuizWhizAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TakeQuizDto>>> GetAllTakenQuiz()
+        public async Task<ActionResult<IEnumerable<TakeQuizDto>>> GetAllTakenQuizzes()
         {
             var takenQuizzes = await _context.TakeQuizzes
-                .Include(tq => tq.CheckTests)
+                .Include(tq => tq.CreatedQuiz)
+                .ThenInclude(cq => cq.Questions)
                 .ToListAsync();
 
             var takeQuizDtos = _mapper.Map<List<TakeQuizDto>>(takenQuizzes);
@@ -35,86 +36,54 @@ namespace QuizWhizAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TakeQuizDto>> GetTakenQuiz(int id)
         {
-            var takenQuizzes = await _context.TakeQuizzes
-                .Include(tq => tq.CheckTests)
-                .ThenInclude(ua => ua.Question)
+            var takenQuiz = await _context.TakeQuizzes
+                .Include(tq => tq.CreatedQuiz)
+                .ThenInclude(cq => cq.Questions)
                 .FirstOrDefaultAsync(tq => tq.TakeQuizId == id);
 
-            if (takenQuizzes == null)
+            if (takenQuiz == null)
             {
-                return NotFound();
+                return NotFound(new { Message = "TakeQuiz not found" });
             }
 
-            var takeQuizDto = _mapper.Map<TakeQuizDto>(takenQuizzes);
+            var takeQuizDto = _mapper.Map<TakeQuizDto>(takenQuiz);
             return Ok(takeQuizDto);
         }
 
-        //Try adding post method for this controller
         [HttpPost("submit")]
         public async Task<IActionResult> SubmitQuiz([FromBody] TakeQuizDto takeQuizDto)
         {
             try
             {
-                // Retrieve the TakeQuiz entity using CreatedQuizId and UserId
-                var takeQuiz = await _context.TakeQuizzes
-                    .Include(tq => tq.CreatedQuiz)
-                    .ThenInclude(cq => cq.Questions)
-                    .FirstOrDefaultAsync(tq => tq.CreatedQuizId == takeQuizDto.CreatedQuizId && tq.UserId == takeQuizDto.UserId);
+                // Retrieve the CreatedQuiz entity
+                var createdQuiz = await _context.CreatedQuizzes
+                    .Include(cq => cq.Questions)
+                    .FirstOrDefaultAsync(cq => cq.CreatedQuizId == takeQuizDto.CreatedQuizId);
 
-                // If TakeQuiz does not exist, create a new one
-                if (takeQuiz == null)
+                if (createdQuiz == null)
                 {
-                    var createdQuiz = await _context.CreatedQuizzes
-                        .Include(cq => cq.Questions)
-                        .FirstOrDefaultAsync(cq => cq.CreatedQuizId == takeQuizDto.CreatedQuizId);
-
-                    if (createdQuiz == null)
-                    {
-                        return NotFound(new { Message = "CreatedQuiz not found" });
-                    }
-
-                    takeQuiz = new TakeQuiz
-                    {
-                        CreatedQuizId = takeQuizDto.CreatedQuizId,
-                        UserId = takeQuizDto.UserId,
-                        Score = 0,
-                        CreatedQuiz = createdQuiz
-                    };
-                    _context.TakeQuizzes.Add(takeQuiz);
-                    await _context.SaveChangesAsync();
+                    return NotFound(new { Message = "CreatedQuiz not found" });
                 }
+
+                // Create a new TakeQuiz entry
+                var takeQuiz = new TakeQuiz
+                {
+                    CreatedQuizId = takeQuizDto.CreatedQuizId,
+                    UserId = takeQuizDto.UserId,
+                    Answer = takeQuizDto.Answer,
+                    Score = 0,
+                    CreatedQuiz = createdQuiz
+                };
 
                 // Compare the user's answers with the correct answers
                 int score = 0;
                 for (int i = 0; i < takeQuizDto.Answer.Count; i++)
                 {
-                    var question = takeQuiz.CreatedQuiz.Questions.ElementAt(i);
+                    var question = createdQuiz.Questions.ElementAt(i);
                     var userAnswer = takeQuizDto.Answer[i];
 
-                    // Create or update a CheckTest entity
-                    var checkTest = await _context.CheckTests
-                        .FirstOrDefaultAsync(ct => ct.QuestionId == question.QuestionId && ct.TakeQuizId == takeQuiz.TakeQuizId);
-
-                    if (checkTest == null)
-                    {
-                        checkTest = new CheckTest
-                        {
-                            QuestionId = question.QuestionId,
-                            TakeQuizId = takeQuiz.TakeQuizId,
-                            Answer = userAnswer,
-                            IsCorrect = userAnswer.Equals(question.QuestionAnswer, StringComparison.OrdinalIgnoreCase)
-                        };
-                        _context.CheckTests.Add(checkTest);
-                    }
-                    else
-                    {
-                        checkTest.Answer = userAnswer;
-                        checkTest.IsCorrect = userAnswer.Equals(question.QuestionAnswer, StringComparison.OrdinalIgnoreCase);
-                        _context.CheckTests.Update(checkTest);
-                    }
-
-                    // Update the score
-                    if (checkTest.IsCorrect)
+                    // Check if the answer is correct
+                    if (userAnswer.Equals(question.QuestionAnswer, StringComparison.OrdinalIgnoreCase))
                     {
                         score++;
                     }
@@ -122,9 +91,9 @@ namespace QuizWhizAPI.Controllers
 
                 // Update the TakeQuiz entity with the score
                 takeQuiz.Score = score;
-                _context.TakeQuizzes.Update(takeQuiz);
 
-                // Save changes to the database
+                // Add the new TakeQuiz entry to the database
+                _context.TakeQuizzes.Add(takeQuiz);
                 await _context.SaveChangesAsync();
 
                 return Ok(new { Score = score });
@@ -139,6 +108,21 @@ namespace QuizWhizAPI.Controllers
             {
                 return BadRequest(new { Message = ex.Message });
             }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTakenQuiz(int id)
+        {
+            var takenQuiz = await _context.TakeQuizzes.FindAsync(id);
+            if (takenQuiz == null)
+            {
+                return NotFound(new { Message = "TakeQuiz not found" });
+            }
+
+            _context.TakeQuizzes.Remove(takenQuiz);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

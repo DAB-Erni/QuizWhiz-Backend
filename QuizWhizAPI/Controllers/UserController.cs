@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuizWhizAPI.Data;
@@ -40,5 +41,31 @@ namespace QuizWhizAPI.Controllers
 
             return _mapper.Map<UserDto>(user);
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == loginRequest.UserName);
+
+            if (user == null || user.Password != loginRequest.Password)
+            {
+                return Unauthorized();
+            }
+
+            return Ok(_mapper.Map<UserDto>(user));
+        }
+
+        private bool VerifyPassword(string password, string storedHash)
+        {
+            return password == storedHash;
+        }
+
+
+    }
+
+    public class LoginRequest
+    {
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }
