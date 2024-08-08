@@ -8,8 +8,8 @@ using QuizWhizAPI.Models.Entities;
 
 namespace QuizWhizAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class CreatedQuizController : ControllerBase
     {
         private readonly QuizDbContext _context;
@@ -24,71 +24,101 @@ namespace QuizWhizAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CreatedQuizDto>>> GetAllCreatedQuiz()
         {
-            var quiz = await _context.CreatedQuizzes.ToListAsync();
-            return _mapper.Map<List<CreatedQuizDto>>(quiz);
+            var createdQuizzes = await _context.CreatedQuizzes
+                .Include(cq => cq.Questions)
+                .Include(cq => cq.CreatedBy)
+                .ToListAsync();
+
+            var createdQuizDtos = _mapper.Map<List<CreatedQuizDto>>(createdQuizzes);
+            return Ok(createdQuizDtos);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<CreatedQuizDto>> GetCreatedQuiz(int id)
         {
-            var quiz = await _context.CreatedQuizzes.FindAsync(id);
+            var quizzes = await _context.CreatedQuizzes
+                .Include(cq => cq.CreatedBy)
+                .Include(cq => cq.Questions)
+                .FirstOrDefaultAsync(cq => cq.CreatedQuizId == id);
 
-            if (quiz == null)
+            if (quizzes == null)
             {
                 return NotFound();
             }
 
-            return _mapper.Map<CreatedQuizDto>(quiz);
+            var quizDto = _mapper.Map<CreatedQuizDto>(quizzes);
+            return Ok(quizDto);
         }
 
         [HttpPost]
-        public async Task<ActionResult<CreatedQuizDto>> CreateCreatedQuiz(CreatedQuizCreateUpdateDto createdQuizDto)
+        public async Task<ActionResult<CreatedQuizDto>> CreateQuiz(CreatedQuizCreateUpdateDto dto)
         {
-            var createdQuiz = _mapper.Map<CreatedQuiz>(createdQuizDto);
+            var user = await _context.Users.FindAsync(dto.UserId);
+            if (user == null || !user.Role.Contains("admin"))
+            {
+                return BadRequest("User not found or not an admin");
+            }
+
+            var createdQuiz = new CreatedQuiz
+            {
+                Title = dto.Title,
+                CreatedBy = user,
+                UserId = dto.UserId
+            };
+
             _context.CreatedQuizzes.Add(createdQuiz);
             await _context.SaveChangesAsync();
 
-            var createdQuizToReturn = _mapper.Map<CreatedQuizDto>(createdQuiz);
-            return CreatedAtAction(nameof(GetCreatedQuiz), new { id = createdQuiz.CreatedQuizId }, createdQuizToReturn);
+            var createdQuizDto = _mapper.Map<CreatedQuizDto>(createdQuiz);
+            return CreatedAtAction(nameof(GetCreatedQuiz), new { id = createdQuiz.CreatedQuizId }, createdQuizDto);
         }
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> UpdateCreatedQuiz(int id, CreatedQuizCreateUpdateDto createdQuizDto)
-        //{
-        //    if (id != createdQuizDto.CreatedQuizId)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCreatedQuiz(int id, CreatedQuizCreateUpdateDto dto)
+        {
+            var existingQuiz = await _context.CreatedQuizzes
+                .Include(cq => cq.CreatedBy)
+                .FirstOrDefaultAsync(cq => cq.CreatedQuizId == id);
 
-        //    var createdQuiz = await _context.CreatedQuizzes.FindAsync(id);
-        //    if (createdQuiz == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (existingQuiz == null)
+            {
+                return NotFound();
+            }
 
-        //    _mapper.Map(createdQuizDto, createdQuiz);
+            var user = await _context.Users.FindAsync(dto.UserId);
+            if (user == null || !user.Role.Contains("admin"))
+            {
+                return BadRequest("User not found or not an admin");
+            }
 
-        //    _context.Entry(createdQuiz).State = EntityState.Modified;
+            // Update the existing quiz with the new values from the DTO
+            existingQuiz.Title = dto.Title;
+            existingQuiz.CreatedBy = user;
+            existingQuiz.UserId = dto.UserId;
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!CreatedQuizExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CreatedQuizExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-        //    return Ok();
-        //}
+            return NoContent();
+        }
 
+        private bool CreatedQuizExists(int id)
+        {
+            return _context.CreatedQuizzes.Any(e => e.CreatedQuizId == id);
+        }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<CreatedQuizDto>> DeleteCreatedQuiz(int id)
@@ -102,7 +132,9 @@ namespace QuizWhizAPI.Controllers
 
             _context.CreatedQuizzes.Remove(createdQuiz);
             await _context.SaveChangesAsync();
+
             return Ok(createdQuiz);
         }
     }
 }
+ 

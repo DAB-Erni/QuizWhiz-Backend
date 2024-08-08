@@ -21,33 +21,6 @@ namespace QuizWhizAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("QuizWhizAPI.Models.Entities.CheckTest", b =>
-                {
-                    b.Property<int>("CheckTestId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CheckTestId"));
-
-                    b.Property<bool>("IsCorrect")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TakeQuizId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CheckTestId");
-
-                    b.HasIndex("QuestionId")
-                        .IsUnique();
-
-                    b.HasIndex("TakeQuizId");
-
-                    b.ToTable("CheckTests");
-                });
-
             modelBuilder.Entity("QuizWhizAPI.Models.Entities.CreatedQuiz", b =>
                 {
                     b.Property<int>("CreatedQuizId")
@@ -142,32 +115,13 @@ namespace QuizWhizAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("QuizWhizAPI.Models.Entities.CheckTest", b =>
-                {
-                    b.HasOne("QuizWhizAPI.Models.Entities.Question", "Question")
-                        .WithOne("CheckTest")
-                        .HasForeignKey("QuizWhizAPI.Models.Entities.CheckTest", "QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("QuizWhizAPI.Models.Entities.TakeQuiz", "TakeQuiz")
-                        .WithMany("CheckTests")
-                        .HasForeignKey("TakeQuizId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Question");
-
-                    b.Navigation("TakeQuiz");
                 });
 
             modelBuilder.Entity("QuizWhizAPI.Models.Entities.CreatedQuiz", b =>
@@ -216,17 +170,6 @@ namespace QuizWhizAPI.Migrations
                     b.Navigation("Questions");
 
                     b.Navigation("TakeQuizzes");
-                });
-
-            modelBuilder.Entity("QuizWhizAPI.Models.Entities.Question", b =>
-                {
-                    b.Navigation("CheckTest")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("QuizWhizAPI.Models.Entities.TakeQuiz", b =>
-                {
-                    b.Navigation("CheckTests");
                 });
 
             modelBuilder.Entity("QuizWhizAPI.Models.Entities.User", b =>

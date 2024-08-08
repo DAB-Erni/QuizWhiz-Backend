@@ -8,8 +8,9 @@ namespace QuizWhizAPI.Models.Entities
         [Key]
         public int TakeQuizId { get; set; }
 
-        public string Answer { get; set; } = string.Empty;
-        
+        //public string Answer { get; set; } = string.Empty;
+        public List<string> Answer { get; set; } = new List<string>();
+
         public int Score { get; set; }
 
         [ForeignKey("CreatedQuiz")]
@@ -21,6 +22,6 @@ namespace QuizWhizAPI.Models.Entities
         public User TakenBy { get; set; }
 
         // Navigation property for one-to-many relationship with CheckTest
-        public ICollection<CheckTest> CheckTests { get; set; } = new List<CheckTest>();
+        //public ICollection<CheckTest> CheckTests { get; set; } = new List<CheckTest>();
     }
 }

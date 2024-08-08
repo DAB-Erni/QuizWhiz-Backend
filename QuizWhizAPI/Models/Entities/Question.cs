@@ -17,7 +17,7 @@ namespace QuizWhizAPI.Models.Entities
         [ForeignKey("CreatedQuiz")]
         public int CreatedQuizId { get; set; }
         public CreatedQuiz CreatedQuiz { get; set; }
-        public CheckTest CheckTest { get; set; }
+        //public CheckTest CheckTest { get; set; }
 
     }
 }
