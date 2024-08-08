@@ -29,7 +29,7 @@ namespace QuizWhizAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<QuestionDto>> GetQuestion(int id)
+        public async Task<ActionResult<QuestionDto>> GetQuestionById(int id)
         {
             var question = await _context.Questions.FindAsync(id);
 
@@ -41,64 +41,59 @@ namespace QuizWhizAPI.Controllers
             return _mapper.Map<QuestionDto>(question);
         }
 
-        [HttpPost]
-        public async Task<ActionResult<QuestionDto>> CreateQuestion(QuestionCreateUpdateDto dto)
+        [HttpPost("{quizId}/questions")]
+        public async Task<IActionResult> AddQuestionToQuiz(int quizId, QuestionCreateUpdateDto dto)
         {
-            var createdQuiz = await _context.CreatedQuizzes.FindAsync(dto.CreatedQuizId);
-            if (createdQuiz == null)
+            var quiz = await _context.CreatedQuizzes
+                .Include(cq => cq.Questions)
+                .FirstOrDefaultAsync(cq => cq.CreatedQuizId == quizId);
+
+            if (quiz == null)
             {
-                return BadRequest("Related quiz not found");
+                return NotFound();
             }
 
             var question = new Question
             {
                 QuestionText = dto.QuestionText,
                 QuestionAnswer = dto.QuestionAnswer,
-                CreatedQuizId = dto.CreatedQuizId,
-                CreatedQuiz = createdQuiz
+                CreatedQuizId = quizId
             };
 
-            _context.Questions.Add(question);
+            quiz.Questions.Add(question);
             await _context.SaveChangesAsync();
 
             var questionDto = _mapper.Map<QuestionDto>(question);
-
-            return CreatedAtAction(nameof(GetQuestion), new { id = question.QuestionId }, questionDto);
+            return CreatedAtAction(nameof(GetQuestionById), new { id = question.QuestionId }, questionDto);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateQuestion(int id, QuestionCreateUpdateDto dto)
+        [HttpPut("{quizId}/questions/{questionId}")]
+        public async Task<IActionResult> UpdateQuestion(int quizId, int questionId, QuestionCreateUpdateDto dto)
         {
             var existingQuestion = await _context.Questions
                 .Include(cq => cq.CreatedQuiz)
-                .FirstOrDefaultAsync(cq => cq.QuestionId == id);
+                .FirstOrDefaultAsync(cq => cq.QuestionId == questionId);
 
             if (existingQuestion == null)
             {
+                Console.WriteLine("Question not found"); // Debugging log
                 return NotFound();
-            }
-
-            var createdQuiz = await _context.CreatedQuizzes.FindAsync(dto.CreatedQuizId);
-            if (createdQuiz == null) {
-                return BadRequest("Related Quiz not found");
             }
 
             existingQuestion.QuestionText = dto.QuestionText;
             existingQuestion.QuestionAnswer = dto.QuestionAnswer;
-            existingQuestion.CreatedQuizId = dto.CreatedQuizId;
-            existingQuestion.CreatedQuiz = createdQuiz;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-
             catch (DbUpdateConcurrencyException)
             {
-                if (!QuestionExists(id))
+                if (!QuestionExists(questionId))
                 {
                     return NotFound();
-                } else
+                }
+                else
                 {
                     throw;
                 }
@@ -111,10 +106,11 @@ namespace QuizWhizAPI.Controllers
             return _context.Questions.Any(e => e.QuestionId == id);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<QuestionDto>> DeleteQuestion(int id)
+        [HttpDelete("{quizId}/questions/{questionId}")]
+        public async Task<ActionResult<QuestionDto>> DeleteQuestion(int quizId, int questionId)
         {
-            var question = await _context.Questions.FindAsync(id);
+            var question = await _context.Questions
+                    .FirstOrDefaultAsync(q => q.QuestionId == questionId && q.CreatedQuizId == quizId);
 
             if (question == null)
             {
@@ -124,7 +120,7 @@ namespace QuizWhizAPI.Controllers
             _context.Questions.Remove(question);
             await _context.SaveChangesAsync();
 
-            return Ok(question);
+            return NoContent();
         }
 
     }
